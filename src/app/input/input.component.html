@@ -1,6 +1,7 @@
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="movieTitle">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="movieTitle" (ngModelChange)="dynamicSearch()">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="fetchMovie()">Button</button>
   </div>
 </div>
+<div *ngIf="results" >Ищем совпадение с {{ movieTitle }}</div>
