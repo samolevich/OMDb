@@ -4,4 +4,20 @@
     <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="fetchMovie()">Button</button>
   </div>
 </div>
-<div *ngIf="results" >Ищем совпадение с {{ movieTitle }}</div>
+<div *ngIf="results" >
+  <p>Ищем совпадение с {{ movieTitle }}</p>
+</div>
+<ul>
+  <li *ngFor="let movie of movies">
+    <div class="card" style="width: 18rem;">
+      <img [src]="movie.Poster" class="card-img-top" [alt]="movie.Title">
+      <div class="card-body">
+        <p class="card-text">
+          <p>Title: {{movie.Title}}</p>
+          <p>Type: {{movie.Type}}</p>
+          <p>Year: {{movie.Year}}</p>
+          <p><a href="https://www.imdb.com/title/{{movie.imdbID}}/" target="_blank" rel="noopener noreferrer">IMDB link</a></p>
+      </div>
+    </div>
+  </li>
+</ul>

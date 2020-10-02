@@ -8,28 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class InputComponent {
   movieTitle = ''
   results = false
+  movies = []
 
   dynamicSearch() {
-    let temp = this.movieTitle
-    if (temp.length > 5) {console.log('111');
+    if (this.movieTitle.trim().length > 5) {
+      this.fetchMovie()
     }
-    console.log(temp);
-    
   }
 
   fetchMovie() {
-    let url = 'http://www.omdbapi.com/?s=matrix&apikey=9e7b9562'
+    if (!this.movieTitle.trim()) {
+      this.results = false
+      return
+    }
+    let url = `http://www.omdbapi.com/?s=${this.movieTitle}&apikey=9e7b9562`
     fetch(url)
       .then(data => data.json())
-      .then(data => console.log(data)
-    )
-    if (this.movieTitle) {
+      .then(data => this.movies = data.Search)
+    if (this.movieTitle.trim()) {
       this.results = true
     }
-  }
-
-  ngAfterContentInit() {
-    console.log('after');
-    
   }
 }

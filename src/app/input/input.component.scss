@@ -7,3 +7,13 @@
 .example-full-width {
   width: 100%;
 }
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+  margin: 10px;
+}
